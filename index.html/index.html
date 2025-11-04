@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verinix - Team Portfolio</title>
+    <style>
+        /* CSS Section - Styling for the entire website */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-img {
+            height: 250px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary);
+        }
+        
+        .member-info {
+            padding: 1.5rem;
+        }
+        
+        .member-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .member-info .role {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .tech-section {
+            margin-bottom: 4rem;
+        }
+        
+        .tech-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .tech-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tech-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tech-card h3 i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .html-card h3 i { color: #e34f26; }
+        .css-card h3 i { color: #1572b6; }
+        .js-card h3 i { color: #f7df1e; }
+        
+        .project-showcase {
+            background: var(--light);
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .project-img {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary);
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .social-links li {
+            margin: 0 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 10px;
+            padding: 2rem;
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        .member-modal-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #ddd;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary);
+        }
+        
+        .modal-member-info {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-member-info h2 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .modal-member-info .role {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .work-samples {
+            margin-top: 2rem;
+        }
+        
+        .work-samples h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .work-item {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--light);
+            border-radius: 5px;
+        }
+        
+        .work-item h4 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HTML Section - Structure of the website -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Veri<span>nix</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#tech">Technologies</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Verinix Development Team</h1>
+            <p>We are a passionate team of developers, designers, and creators dedicated to building innovative digital solutions that make a difference.</p>
+            <a href="#team" class="btn">Meet Our Team</a>
+        </div>
+    </section>
+
+    <section id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Team</h2>
+            </div>
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-member" data-member="kyle">
+                    <div class="member-img">KD</div>
+                    <div class="member-info">
+                        <h3>Kyle Andrew De Guzman</h3>
+                        <span class="role">Project Manager</span>
+                        <p>Oversees project planning, coordination, and execution to ensure timely delivery.</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-member" data-member="alessandra">
+                    <div class="member-img">AA</div>
+                    <div class="member-info">
+                        <h3>Alessandra Yvez Abitong</h3>
+                        <span class="role">Frontend Developer</span>
+                        <p>Creates engaging and responsive user interfaces with modern web technologies.</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-member" data-member="ray">
+                    <div class="member-img">RB</div>
+                    <div class="member-info">
+                        <h3>Ray Allen Biding</h3>
+                        <span class="role">Backend Developer</span>
+                        <p>Develops robust server-side applications and manages database architecture.</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="team-member" data-member="felicity">
+                    <div class="member-img">FN</div>
+                    <div class="member-info">
+                        <h3>Felicity Ngalongalo</h3>
+                        <span class="role">QA/Tester</span>
+                        <p>Ensures product quality through comprehensive testing and quality assurance processes.</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 5 -->
+                <div class="team-member" data-member="karl">
+                    <div class="member-img">KB</div>
+                    <div class="member-info">
+                        <h3>Karl Lawrence Bautista</h3>
+                        <span class="role">Marketing</span>
+                        <p>Develops marketing strategies and promotes our products to target audiences.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech">
+        <div class="container">
+            <div class="section-title">
+                <h2>Technologies</h2>
+            </div>
+            
+            <div class="tech-section">
+                <div class="tech-cards">
+                    <div class="tech-card html-card">
+                        <h3><i class="fab fa-html5"></i> HTML</h3>
+                        <p>We use semantic HTML5 to create well-structured, accessible web pages that provide the foundation for all our projects.</p>
+                        <ul>
+                            <li>Semantic HTML5 elements</li>
+                            <li>Accessibility best practices</li>
+                            <li>SEO-optimized structure</li>
+                            <li>Cross-browser compatibility</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-card css-card">
+                        <h3><i class="fab fa-css3-alt"></i> CSS</h3>
+                        <p>Our CSS implementation focuses on responsive design, modern layouts, and engaging user experiences.</p>
+                        <ul>
+                            <li>CSS Grid and Flexbox</li>
+                            <li>Responsive design principles</li>
+                            <li>CSS animations and transitions</li>
+                            <li>Custom properties (CSS variables)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-card js-card">
+                        <h3><i class="fab fa-js-square"></i> JavaScript</h3>
+                        <p>We leverage modern JavaScript to create interactive, dynamic web applications with excellent performance.</p>
+                        <ul>
+                            <li>ES6+ features</li>
+                            <li>DOM manipulation</li>
+                            <li>Async programming</li>
+                            <li>API integration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-showcase" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Project Showcase</h2>
+            </div>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-img">V1</div>
+                    <div class="project-info">
+                        <h3>E-Commerce Platform</h3>
+                        <p>A full-featured online shopping platform with user accounts, product catalog, and secure payment processing.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">V2</div>
+                    <div class="project-info">
+                        <h3>Task Management App</h3>
+                        <p>A collaborative project management tool with real-time updates, team assignments, and progress tracking.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">V3</div>
+                    <div class="project-info">
+                        <h3>Portfolio Website</h3>
+                        <p>A responsive portfolio website showcasing our team's skills, projects, and individual contributions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Veri<span>nix</span></div>
+                <p>Building digital solutions for tomorrow's challenges</p>
+                <ul class="social-links">
+                    <li><a href="#"><i class="fab fa-github"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+                <p class="copyright">&copy; 2023 Verinix Team. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Member Modal -->
+    <div class="modal" id="memberModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="member-modal-img" id="modalImg">?</div>
+            <div class="modal-member-info">
+                <h2 id="modalName">Team Member</h2>
+                <span class="role" id="modalRole">Role</span>
+                <p id="modalBio">Bio information will appear here.</p>
+            </div>
+            <div class="work-samples">
+                <h3>Individual Work Samples</h3>
+                <div id="workSamples">
+                    <!-- Work samples will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Section - Interactive functionality -->
+    <script>
+        // Team member data
+        const teamMembers = {
+            kyle: {
+                name: "Kyle Andrew De Guzman",
+                role: "Project Manager",
+                bio: "Oversees project planning, coordination, and execution to ensure timely delivery. With 5+ years of experience in project management, Kyle ensures our projects are delivered on time and within scope.",
+                workSamples: [
+                    { title: "Project Timeline Dashboard", description: "Interactive Gantt chart for project tracking" },
+                    { title: "Team Collaboration Framework", description: "Methodology for efficient team workflows" },
+                    { title: "Risk Assessment Matrix", description: "Tool for identifying and mitigating project risks" }
+                ]
+            },
+            alessandra: {
+                name: "Alessandra Yvez Abitong",
+                role: "Frontend Developer",
+                bio: "Creates engaging and responsive user interfaces with modern web technologies. Specializes in React, Vue.js, and CSS animations to build intuitive user experiences.",
+                workSamples: [
+                    { title: "Responsive E-Commerce UI", description: "Mobile-first design for online shopping" },
+                    { title: "Interactive Data Visualization", description: "Charts and graphs with D3.js" },
+                    { title: "Component Library", description: "Reusable UI components for rapid development" }
+                ]
+            },
+            ray: {
+                name: "Ray Allen Biding",
+                role: "Backend Developer",
+                bio: "Develops robust server-side applications and manages database architecture. Expert in Node.js, Python, and database optimization for high-performance applications.",
+                workSamples: [
+                    { title: "RESTful API Implementation", description: "Scalable backend for web and mobile apps" },
+                    { title: "Database Optimization", description: "Query performance improvements and indexing" },
+                    { title: "Authentication System", description: "Secure user authentication with JWT" }
+                ]
+            },
+            felicity: {
+                name: "Felicity Ngalongalo",
+                role: "QA/Tester",
+                bio: "Ensures product quality through comprehensive testing and quality assurance processes. Implements automated testing pipelines and manual testing protocols.",
+                workSamples: [
+                    { title: "Automated Test Suite", description: "Selenium-based testing for web applications" },
+                    { title: "Performance Testing Framework", description: "Load testing with JMeter" },
+                    { title: "Bug Tracking System", description: "Custom dashboard for issue management" }
+                ]
+            },
+            karl: {
+                name: "Karl Lawrence Bautista",
+                role: "Marketing",
+                bio: "Develops marketing strategies and promotes our products to target audiences. Creates compelling content and analyzes market trends to drive user engagement.",
+                workSamples: [
+                    { title: "Marketing Campaign Analytics", description: "Dashboard for tracking campaign performance" },
+                    { title: "Social Media Strategy", description: "Content calendar and engagement metrics" },
+                    { title: "User Persona Development", description: "Research-based customer profiles" }
+                ]
+            }
+        };
+
+        // DOM elements
+        const modal = document.getElementById('memberModal');
+        const modalName = document.getElementById('modalName');
+        const modalRole = document.getElementById('modalRole');
+        const modalBio = document.getElementById('modalBio');
+        const modalImg = document.getElementById('modalImg');
+        const workSamplesContainer = document.getElementById('workSamples');
+        const closeModal = document.querySelector('.close-modal');
+        const teamMembersElements = document.querySelectorAll('.team-member');
+
+        // Open modal when team member is clicked
+        teamMembersElements.forEach(member => {
+            member.addEventListener('click', () => {
+                const memberId = member.getAttribute('data-member');
+                const memberData = teamMembers[memberId];
+                
+                // Update modal content
+                modalName.textContent = memberData.name;
+                modalRole.textContent = memberData.role;
+                modalBio.textContent = memberData.bio;
+                modalImg.textContent = memberData.name.split(' ').map(n => n[0]).join('');
+                
+                // Clear and populate work samples
+                workSamplesContainer.innerHTML = '';
+                memberData.workSamples.forEach(sample => {
+                    const workItem = document.createElement('div');
+                    workItem.className = 'work-item';
+                    workItem.innerHTML = `
+                        <h4>${sample.title}</h4>
+                        <p>${sample.description}</p>
+                    `;
+                    workSamplesContainer.appendChild(workItem);
+                });
+                
+                // Show modal
+                modal.style.display = 'flex';
+            });
+        });
+
+        // Close modal when X is clicked
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside content
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add Font Awesome for icons (simulated)
+        document.head.insertAdjacentHTML('beforeend', `
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        `);
+    </script>
+</body>
+</html>
